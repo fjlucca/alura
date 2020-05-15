@@ -8,7 +8,7 @@
 body {
     background-image: url("../img/fundo.jpg");
     background-size: auto 100vh;
-    font-family: Arial;
+    font-family: 'Source Code Pro', monospace;
     height: 100vh; 
     font-size: 12px;       
   }
@@ -33,12 +33,13 @@ body {
     justify-content: center;
     align-items: center;
   }
-  
+    
   .menu {
     background-color: #d1e0e0;
     position: fixed;
     width: 100vw;
     top: 0;
+    z-index: 1;
   }
   
   .menu ul {
@@ -53,6 +54,14 @@ body {
   .menu a{    
     padding: 10px 20px;
     display: block;
+    transition: background-color 1s, color 1s;
+  }
+
+  .menu a:active,
+  .menu a:hover {
+    background-color: #336699;
+    color: whitesmoke;
+    text-decoration: none;
   }
   
   a{
@@ -64,6 +73,19 @@ body {
     text-decoration: underline;
   }
   
+  .titulo {
+    transform: scale(0.2) translateY(50vh);
+    opacity: 0;
+    animation: 1s linear 2s animacaoTitulo forwards;
+  }
+
+  @keyframes animacaoTitulo {
+    100% {
+      transform: scale(1) translateY(0);
+    opacity: 1;
+    }
+  }
+
   .site-subtitle,
   .site-title{
     color: #336699;
@@ -71,14 +93,78 @@ body {
   }
   
   .site-title{
-    font-size: 2em;
+    font-size: 4em;
+    font-family: 'Gloria Hallelujah', cursive;
   }
 
   .site-subtitle{
     font-style: italic;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1em;
+  }
+
+  .contato,
+  .portfolio {   
+    padding: 2em;
+    min-height: 100vh;
+}
+
+  .contato h2,
+  .portfolio h2 {
+    font-family: 'Roboto', sans-serif;
+    color: #336699;
+    margin-bottom: 1.5em;
+    font-size: 2em;
+  }
+
+  .portfolio .grid {
+    display: grid;
+    gap: 2em;    
+  }
+
+  @media (min-width: 560px) {
+    .portfolio .grid {
+      grid-template-columns: 240px 240px;
+    }
+  }
+
+  @media (min-width: 880px) {
+    .portfolio .grid {
+      grid-template-columns: repeat(3, 240px);
+      align-content: center;
+      justify-content: center;
+      height: calc(100vh - 8em - 48px);
+    }
+  }
+
+  .portfolio figure {
+    text-align: center;
   }
 
   .img-portfolio {
     width: 180px;
     height: 180px;
+    object-fit: cover;
+    border-radius: 40px; 
+    transition: transform 500ms;   
+  }
+
+  .img-portfolio:hover {
+    transform: scale(1.2) rotate(-2deg);
+  }
+
+  .contato .icons {
+    text-align: center;
+  }
+
+  .contato a {
+    color: #336699;    
+    font-size: 3em;
+    transition: text-shadow 1s;
+  }
+
+  .contato a:active,
+  .contato a:hover {
+    text-decoration: none;
+    text-shadow: 0px 0px 10px rgba(43,147,238,1);
   }
